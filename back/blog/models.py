@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 import uuid
 
+# from blog_rest.serializers import Base64ImageField
+
 DEFAULT_REGION_ID = 1
 DEFAULT_CITY_ID = 4
 
@@ -45,7 +47,7 @@ class Post(models.Model, ):
     name = models.CharField(max_length=40, unique_for_date="publication_date", default='New post')
     body = models.TextField()
     city = models.ForeignKey(City, default=DEFAULT_CITY_ID)
-    image = models.ImageField('Uploaded Image', null=True, blank=True, upload_to=scramble_uploaded_image_name)
+    images = models.CharField(max_length=999992, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -59,6 +61,8 @@ class Image(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     name = models.CharField(max_length=40, default='New post')
     post = models.IntegerField(default=0)
+    image = models.ImageField('Uploaded Image', null=True, blank=True, upload_to=scramble_uploaded_image_name)
+    # image = Base64ImageField(max_length=None, use_url=True)
 
     def __str__(self):
         return self.name
