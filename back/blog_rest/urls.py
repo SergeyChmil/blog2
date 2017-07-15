@@ -6,7 +6,7 @@ router = routers.DefaultRouter()
 router.register('posts', PostViewSet, 'posts')
 router.register('cities', CityViewSet, 'cities')
 router.register('regions', RegionViewSet, 'regions')
-router.register('upload_images', ImageViewSet, 'upload_images')
+router.register('images', ImageViewSet, 'images')
 
 
 # urlpatterns = [

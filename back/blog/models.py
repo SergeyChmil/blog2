@@ -60,7 +60,8 @@ class Image(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     name = models.CharField(max_length=40, default='New post')
-    post = models.IntegerField(default=0)
+    # post = models.IntegerField(default=0)
+    post = models.ForeignKey(Post, blank=True, null=True, on_delete=models.CASCADE)
     image = models.ImageField('Uploaded Image', null=True, blank=True, upload_to=scramble_uploaded_image_name)
     # image = Base64ImageField(max_length=None, use_url=True)
 
